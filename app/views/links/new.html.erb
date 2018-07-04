@@ -1,5 +1,6 @@
 <h1>Enter a link to make it shorter:</h1>
 <%= form_with scope: :link, url: links_path, local: true do |f| %>
+
   <p>
     <%= f.text_field :url_long %>
   </p>

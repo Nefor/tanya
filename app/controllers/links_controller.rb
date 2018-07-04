@@ -1,10 +1,13 @@
 class LinksController < ApplicationController
 
-  # def test
-  #   # binding.pry
-  #   params[:short_url]
-  #   redirect_to 'https://paste2.org/CjGv2dDZ'
-  # end
+  def redirect
+    link =  Link.find_by(url_short: params[:short_url])
+    if link.nil?
+      redirect_to new_link_path
+    else
+      redirect_to link.url_long
+    end
+  end
 
 
   def index
@@ -27,6 +30,6 @@ class LinksController < ApplicationController
 
   private
     def link_params
-      params.require(:link).permit(:link)
+      params.require(:link).permit(:url_long)
     end
 end

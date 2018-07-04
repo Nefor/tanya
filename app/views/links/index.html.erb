@@ -1,5 +1,5 @@
 <h1>Links</h1>
+<p>Copy the correct url and try to use it or just click on link</p>
 <% @links.each do |l| %>
-  <a href="<%= l.url_long %>">Your link: <%= l.url_short %></a><br>
+  <a href="<%= l.url_long %>"><%= "http://localhost:3000/" + l.url_short %></a><br>
 <% end %>
-
