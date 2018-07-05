@@ -11,7 +11,7 @@ class LinksController < ApplicationController
 
 
   def index
-    @links = Link.all
+    @links = Link.all.order(created_at: :desc)
   end
 
   def show
@@ -24,7 +24,6 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(link_params)
-    @link.url_short = ("a".."z").to_a.insert(-1, 1, 2,3,4,5,6,7,8,9,0).sample(5).join
     if @link.save
       redirect_to @link
     else
