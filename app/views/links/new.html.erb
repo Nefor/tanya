@@ -1,6 +1,19 @@
 <h1>Enter a link to make it shorter:</h1>
 <%= form_with scope: :link, url: links_path, local: true do |f| %>
 
+  <% if @link.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@link.errors.count, "error") %>
+      </h2>
+      <ul>
+        <% @link.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <p>
     <%= f.text_field :url_long %>
   </p>

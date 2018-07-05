@@ -19,13 +19,17 @@ class LinksController < ApplicationController
   end
 
   def new
+    @link = Link.new
   end
 
   def create
     @link = Link.new(link_params)
     @link.url_short = ("a".."z").to_a.insert(-1, 1, 2,3,4,5,6,7,8,9,0).sample(5).join
-    @link.save
-    redirect_to @link
+    if @link.save
+      redirect_to @link
+    else
+      render 'new'
+    end
   end
 
   private
